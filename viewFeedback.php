@@ -12,7 +12,7 @@
     <style>
       html, body {
       overflow-x:hidden ;
-    } 
+    }
 
     </style>
   </head>
@@ -29,7 +29,7 @@
           die("Connection failed: " . $conn->connect_error);
         }
         //SELECT LectName FROM LECTURER ORDER BY id DESC
-        $sql = "SELECT LectName FROM LECTURER where LectID = '$lecturer_id'";
+        $sql = "SELECT LectName FROM lecturer where LectID = '$lecturer_id'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           // output data of each row
@@ -53,6 +53,7 @@
                   <div class="form-group">
                       <label for="lid">maximum characters is 170</label>
                       <input name="lid" value="<?php echo $lecturer_id;?>" style="display:none;">
+                        <input type="hidden" name="token" value="<?php echo $token; ?>">
                       <textarea class="form-control" id="studentFeedback" name="studentFeedback" rows="5" maxLength="170"></textarea>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -89,7 +90,7 @@
         */
         $conn->close();
       ?>
-        
+
   </div>
 
 
